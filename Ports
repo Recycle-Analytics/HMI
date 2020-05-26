@@ -1,0 +1,79 @@
+#########################
+
+Pmod JC JD
+
+Lcd Db JC
+
+Pmod	FPGA	db
+JC1:	K1		3
+JC2:	F6 		5
+JC3:	J2		7
+JC4:	G6		1
+JC7:	E7		2
+JC8:	J3		4
+JC9:	J4		6
+JC10:	E6		0
+
+Lcd Db JC
+
+Pmod	FPGA	db
+JC10:	E6		0
+JC4:	G6		1
+JC7:	E7		2
+JC1:	K1		3
+JC8:	J3		4
+JC2:	F6 		5
+JC9:	J4		6
+JC3:	J2		7
+
+Lcd control JD
+
+Pmob	FPGA	lcd
+
+JD1:	H4 	    Cs
+JD2:	H1  	Wr
+JD3:	G1  	N.C.
+JD4:	G3  	N.C.
+JD7:	H2  	Rst
+JD8:	G4  	Rs
+JD9:	G2  	Rd
+JD10:	F3	    N.C.
+
+
+#########################
+
+Pmod JA JB
+
+Lcd Db JA
+
+Pmod	FPGA	db
+JA1:	C17		3
+JA2:	D18		5
+JA3:	E18		7
+JA4:	G17		1
+JA7:	D17		2
+JA8:	E17		4
+JA9:	F18		6
+JA10:	G18		0
+
+Pmod	FPGA	db
+JA10:	G18		0
+JA4:	G17		1
+JA7:	D17		2
+JA1:	C17		3
+JA8:	E17		4
+JA2:	D18		5
+JA9:	F18		6
+JA3:	E18		7
+
+Lcd control
+
+Pmob	FPGA	lcd
+JB1:	D14		cs
+JB2:	F16		wr
+JB3:	G16		N.C.
+JB4:	H14		N.C.
+JB7:	E16		rst
+JB8:	F13		rs
+JB9:	G13		rd
+JB10:	H16		N.C.

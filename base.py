@@ -93,23 +93,23 @@ class BaseSoC(SoCCore):
         self.add_csr("buttons")
 
         #LCD
-        self.submodules.lcd_test = LCD_i80(sys_clk_freq)
+        self.submodules.lcd_core = LCD_i80(sys_clk_freq)
         self.comb += [
-            platform.request("db").eq(self.lcd_test.db_),
-            platform.request("cs").eq(self.lcd_test.cs_),
-            platform.request("rs").eq(self.lcd_test.rs_),
-            platform.request("rd").eq(self.lcd_test.rd_),
-            platform.request("wr").eq(self.lcd_test.wr_),
-            platform.request("rst").eq(self.lcd_test.rst_),
+            platform.request("db").eq(self.lcd_core.db_),
+            platform.request("cs").eq(self.lcd_core.cs_),
+            platform.request("rs").eq(self.lcd_core.rs_),
+            platform.request("rd").eq(self.lcd_core.rd_),
+            platform.request("wr").eq(self.lcd_core.wr_),
+            platform.request("rst").eq(self.lcd_core.rst_),
 
-            platform.request("db1").eq(self.lcd_test.db_),
-            platform.request("cs1").eq(self.lcd_test.cs_),
-            platform.request("rs1").eq(self.lcd_test.rs_),
-            platform.request("rd1").eq(self.lcd_test.rd_),
-            platform.request("wr1").eq(self.lcd_test.wr_),
-            platform.request("rst1").eq(self.lcd_test.rst_),
+            platform.request("db1").eq(self.lcd_core.db_),
+            platform.request("cs1").eq(self.lcd_core.cs_),
+            platform.request("rs1").eq(self.lcd_core.rs_),
+            platform.request("rd1").eq(self.lcd_core.rd_),
+            platform.request("wr1").eq(self.lcd_core.wr_),
+            platform.request("rst1").eq(self.lcd_core.rst_),
            ]
-        self.add_csr("lcd_test")
+        self.add_csr("lcd_core")
 
 soc = BaseSoC(platform)
 

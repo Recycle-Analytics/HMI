@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Tue May 26 16:31:12 2020
+| Date         : Tue May 26 21:26:01 2020
 | Host         : Regular-PC running 64-bit Ubuntu 19.10
 | Command      : report_utilization -hierarchical -file top_utilization_hierarchical_place.rpt
 | Design       : top
@@ -26,7 +26,7 @@ Table of Contents
 |   VexRiscv                 |         VexRiscv |       2000 |       2000 |       0 |    0 | 1238 |      1 |      8 |            4 |
 |     (VexRiscv)             |         VexRiscv |        838 |        838 |       0 |    0 | 1019 |      0 |      2 |            4 |
 |     IBusCachedPlugin_cache | InstructionCache |        728 |        728 |       0 |    0 |   98 |      1 |      1 |            0 |
-|     dataCache_1_           |        DataCache |        451 |        451 |       0 |    0 |  121 |      0 |      5 |            0 |
+|     dataCache_1_           |        DataCache |        452 |        452 |       0 |    0 |  121 |      0 |      5 |            0 |
 +----------------------------+------------------+------------+------------+---------+------+------+--------+--------+--------------+
 * Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
 

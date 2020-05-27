@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Tue May 26 16:30:21 2020
+| Date         : Tue May 26 21:25:04 2020
 | Host         : Regular-PC running 64-bit Ubuntu 19.10
 | Command      : report_utilization -file top_utilization_synth.rpt
 | Design       : top
@@ -154,11 +154,11 @@ Table of Contents
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | FDRE     | 1739 |        Flop & Latch |
-| LUT6     |  969 |                 LUT |
-| LUT5     |  523 |                 LUT |
-| LUT4     |  426 |                 LUT |
+| LUT6     |  967 |                 LUT |
+| LUT5     |  525 |                 LUT |
+| LUT4     |  427 |                 LUT |
 | LUT3     |  334 |                 LUT |
-| LUT2     |  327 |                 LUT |
+| LUT2     |  326 |                 LUT |
 | CARRY4   |  131 |          CarryLogic |
 | LUT1     |  106 |                 LUT |
 | FDSE     |   41 |        Flop & Latch |

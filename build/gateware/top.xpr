@@ -6,7 +6,7 @@
 <Project Version="7" Minor="44" Path="/media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/gateware/top.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="79563fd3afa043ef85355704c89eb8d6"/>
+    <Option Name="Id" Val="d0593a7874a54be09e21f62fde93bb1f"/>
     <Option Name="Part" Val="xc7a100tcsg324-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>

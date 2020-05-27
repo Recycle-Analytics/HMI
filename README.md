@@ -2,12 +2,12 @@
 HMI used to show information about truck status and collection plan.
 
 ## El proyecto
-Descripció general del proyecto
+Descripción general del proyecto
 
 ### Especificaciones
 GameSnake cuenta con las siguientes especificaciones 
 
-* Pantalla a color RGB LCD de resolución 240x320. Se utilizaron solamente 4 colores diferentes y la resolución final del videojugego fue de 240x240.
+* Pantalla a color RGB LCD de resolución 240x320.
 * Procesador de 32 bits (VexRiscV).
 * Frecuencia del reloj: 100MHz.
 * Memoria ROM integrada de 8Kb.

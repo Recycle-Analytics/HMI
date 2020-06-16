@@ -12,23 +12,23 @@ static uint16_t convert(uint8_t number)
 }
 
 static void lcd_write_Oaddr(unsigned char address){
-    lcd_test_ADDR_write(address);
-    lcd_test_DATA_write(0x00);
-    lcd_test_OPTION_write(0);
-    lcd_test_START_write(1);
-    lcd_test_START_write(0);
-    while(lcd_test_BUSY_read()==1);
+    lcd_core_ADDR_write(address);
+    lcd_core_DATA_write(0x00);
+    lcd_core_OPTION_write(0);
+    lcd_core_START_write(1);
+    lcd_core_START_write(0);
+    while(lcd_core_BUSY_read()==1);
     busy_wait(0); //ojo con esto, demora mucho la vaina
 }
 
 static void lcd_write_Odata(unsigned short int value)
 {
-    lcd_test_ADDR_write(0x00);
-    lcd_test_DATA_write(value);
-    lcd_test_OPTION_write(1);
-    lcd_test_START_write(1);
-    lcd_test_START_write(0);
-    while(lcd_test_BUSY_read()==1);
+    lcd_core_ADDR_write(0x00);
+    lcd_core_DATA_write(value);
+    lcd_core_OPTION_write(1);
+    lcd_core_START_write(1);
+    lcd_core_START_write(0);
+    while(lcd_core_BUSY_read()==1);
     busy_wait(0); //ojo con esto, demora mucho la vaina
 }
 

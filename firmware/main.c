@@ -76,6 +76,7 @@ static void help(void)
 	puts("1                               - Start game");
 	puts("2                               - Initialize screen");
 	puts("3                               - fill screen");
+	puts("4                               - Serial loop");
 }
 
 static void reboot(void)
@@ -121,6 +122,12 @@ static void console_service(void)
 		initScreen();
 	else if(strcmp(token, "3") == 0)
 		fill();
+	else if(strcmp(token, "4") == 0){
+		while(1){
+				puts("HOLA MUNDO");
+				busy_wait(1000);
+			}
+		}
 	prompt();
 }
 

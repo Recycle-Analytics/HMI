@@ -26,9 +26,17 @@ _io = [
     ("serial", 0,
         Subsignal("tx", Pins("D4")),
         Subsignal("rx", Pins("C4")),
-        IOStandard("LVCMOS33"),
+        IOStandard("LVCMOS33")
     ),
-
+    ("serial", 1,
+        Subsignal("tx", Pins("F3")),
+        Subsignal("rx", Pins("G3")),
+        IOStandard("LVCMOS33")
+    ),
+    
+    ("tx2", 0, Pins("G3"), IOStandard("LVCMOS33")),
+    ("rx2", 0, Pins("F3"), IOStandard("LVCMOS33")),
+    
     ("user_btn", 0, Pins("M18"), IOStandard("LVCMOS33")),
     ("user_btn", 1, Pins("M17"), IOStandard("LVCMOS33")),
     ("user_btn", 2, Pins("P18"), IOStandard("LVCMOS33")),
@@ -110,6 +118,9 @@ class BaseSoC(SoCCore):
             platform.request("rst1").eq(self.lcd_core.rst_),
            ]
         self.add_csr("lcd_core")
+        #Serial clone
+        #serial = platform.request("serial", 1)
+        #serial = platform.request("serial", 0)
 
 soc = BaseSoC(platform)
 

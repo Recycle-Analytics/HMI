@@ -124,8 +124,12 @@ static void console_service(void)
 		fill();
 	else if(strcmp(token, "4") == 0){
 		while(1){
-				puts("HOLA MUNDO");
-				busy_wait(1000);
+			str = readstr();
+			if(str == NULL) return;
+			token = get_token(&str);
+					puts("str");
+					puts("HOLA MUNDO");
+					busy_wait(1000);
 			}
 		}
 	prompt();
@@ -148,6 +152,18 @@ int main(void)
 
 	while(1) {
 		console_service();
+		//char *str;
+		//char *token;
+		//str = readstr();
+		//if(str != NULL){
+		//	token = get_token(&str);
+		//	busy_wait(100);
+		//	puts("------------");
+		//	puts("HOLA MUNDO: ");
+		//	puts("Read token");
+		//	puts(token);
+		//	puts("------------");
+		//}
 	}
 
 	return 0;

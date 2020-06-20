@@ -9,19 +9,23 @@ main.o: /opt/liteX/litex/litex/soc/software/bios/main.c \
  /opt/liteX/litex/litex/soc/cores/cpu/vexriscv/csr-defs.h \
  /opt/liteX/litex/litex/soc/software/include/base/id.h \
  /opt/liteX/litex/litex/soc/cores/cpu/vexriscv/irq.h \
- /media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/csr.h \
- /media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/soc.h \
+ /home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/csr.h \
+ /home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/soc.h \
  /opt/liteX/litex/litex/soc/software/include/base/stdint.h \
  /opt/liteX/litex/litex/soc/software/include/hw/common.h \
  /opt/liteX/litex/litex/soc/software/include/base/crc.h \
- /media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/mem.h \
- /media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/git.h \
- /opt/liteX/litex/litex/soc/software/bios/sdram.h \
- /opt/liteX/litex/litex/soc/software/bios/sdcard.h \
  /opt/liteX/litex/litex/soc/software/bios/boot.h \
  /opt/liteX/litex/litex/soc/software/bios/readline.h \
  /opt/liteX/litex/litex/soc/software/bios/helpers.h \
- /opt/liteX/litex/litex/soc/software/bios/command.h
+ /opt/liteX/litex/litex/soc/software/bios/command.h \
+ /home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/mem.h \
+ /home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/git.h \
+ /opt/liteX/litex/litex/soc/software/include/base/spiflash.h \
+ /opt/liteX/litex/litex/soc/software/liblitedram/sdram.h \
+ /opt/liteX/litex/litex/soc/software/libliteeth/udp.h \
+ /opt/liteX/litex/litex/soc/software/libliteeth/mdio.h \
+ /opt/liteX/litex/litex/soc/software/liblitespi/spiflash.h \
+ /opt/liteX/litex/litex/soc/software/liblitesdcard/sdcard.h
 
 /opt/liteX/litex/litex/soc/software/include/base/stdio.h:
 
@@ -43,23 +47,15 @@ main.o: /opt/liteX/litex/litex/soc/software/bios/main.c \
 
 /opt/liteX/litex/litex/soc/cores/cpu/vexriscv/irq.h:
 
-/media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/csr.h:
+/home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/csr.h:
 
-/media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/soc.h:
+/home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/soc.h:
 
 /opt/liteX/litex/litex/soc/software/include/base/stdint.h:
 
 /opt/liteX/litex/litex/soc/software/include/hw/common.h:
 
 /opt/liteX/litex/litex/soc/software/include/base/crc.h:
-
-/media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/mem.h:
-
-/media/lcdiazf/DATA/ASUS/Documents/UniversidadNacional/2020-I/SistemasEmbebidos/HMI/build/software/include/generated/git.h:
-
-/opt/liteX/litex/litex/soc/software/bios/sdram.h:
-
-/opt/liteX/litex/litex/soc/software/bios/sdcard.h:
 
 /opt/liteX/litex/litex/soc/software/bios/boot.h:
 
@@ -68,3 +64,19 @@ main.o: /opt/liteX/litex/litex/soc/software/bios/main.c \
 /opt/liteX/litex/litex/soc/software/bios/helpers.h:
 
 /opt/liteX/litex/litex/soc/software/bios/command.h:
+
+/home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/mem.h:
+
+/home/lcdiazf/Documents/Embebidos/HMI/build/software/include/generated/git.h:
+
+/opt/liteX/litex/litex/soc/software/include/base/spiflash.h:
+
+/opt/liteX/litex/litex/soc/software/liblitedram/sdram.h:
+
+/opt/liteX/litex/litex/soc/software/libliteeth/udp.h:
+
+/opt/liteX/litex/litex/soc/software/libliteeth/mdio.h:
+
+/opt/liteX/litex/litex/soc/software/liblitespi/spiflash.h:
+
+/opt/liteX/litex/litex/soc/software/liblitesdcard/sdcard.h:

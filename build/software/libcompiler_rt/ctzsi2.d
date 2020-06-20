@@ -1,15 +1,15 @@
 ctzsi2.o: \
- /home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/ctzsi2.c \
- /home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_lib.h \
+ /usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/ctzsi2.c \
+ /usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_lib.h \
  /opt/liteX/litex/litex/soc/software/include/base/limits.h \
  /opt/liteX/litex/litex/soc/software/include/base/stdint.h \
  /opt/liteX/litex/litex/soc/software/include/base/stdbool.h \
  /opt/liteX/litex/litex/soc/software/include/base/float.h \
- /home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_types.h \
- /home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_endianness.h \
- /home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_util.h
+ /usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_types.h \
+ /usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_endianness.h \
+ /usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_util.h
 
-/home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_lib.h:
+/usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_lib.h:
 
 /opt/liteX/litex/litex/soc/software/include/base/limits.h:
 
@@ -19,8 +19,8 @@ ctzsi2.o: \
 
 /opt/liteX/litex/litex/soc/software/include/base/float.h:
 
-/home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_types.h:
+/usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_types.h:
 
-/home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_endianness.h:
+/usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_endianness.h:
 
-/home/lcdiazf/.local/lib/python3.7/site-packages/pythondata_software_compiler_rt/data/lib/builtins/int_util.h:
+/usr/local/lib/python3.8/dist-packages/pythondata_software_compiler_rt-0.0.post6200-py3.8.egg/pythondata_software_compiler_rt/data/lib/builtins/int_util.h:

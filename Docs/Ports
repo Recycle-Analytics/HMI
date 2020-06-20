@@ -33,11 +33,11 @@ Pmob	FPGA	lcd
 JD1:	H4 	    Cs
 JD2:	H1  	Wr
 JD3:	G1  	N.C.
-JD4:	G3  	N.C.
+JD4:	G3  	N.C. <--------tx
 JD7:	H2  	Rst
 JD8:	G4  	Rs
 JD9:	G2  	Rd
-JD10:	F3	    N.C.
+JD10:	F3	N.C. <--------rx
 
 
 #########################

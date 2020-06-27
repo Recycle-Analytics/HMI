@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date                      : Wed Jun 17 13:00:14 2020
+| Date                      : Thu Jun 25 20:28:39 2020
 | Host                      : CoolerPc running 64-bit Ubuntu 20.04 LTS
 | Command                   : report_io -file __main___io.rpt
 | Design                    : __main__
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            35 |
+|            37 |
 +---------------+
 
 
@@ -127,7 +127,7 @@ Table of Contents
 | E18        | db[7]       | High Range | IO_L21P_T3_DQS_15            | OUTPUT      | LVCMOS33    |      15 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | F1         |             | High Range | IO_L18P_T2_35                | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | F2         |             | High Range | VCCO_35                      | VCCO        |             |      35 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
-| F3         |             | High Range | IO_L13N_T2_MRCC_35           | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| F3         | uart0_rx    | High Range | IO_L13N_T2_MRCC_35           | INPUT       | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | F4         |             | High Range | IO_L13P_T2_MRCC_35           | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | F5         |             | High Range | IO_0_35                      | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | F6         | db1[5]      | High Range | IO_L19N_T3_VREF_35           | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
@@ -145,7 +145,7 @@ Table of Contents
 | F18        | db[6]       | High Range | IO_L22N_T3_A16_15            | OUTPUT      | LVCMOS33    |      15 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | G1         |             | High Range | IO_L17N_T2_35                | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | G2         | rd1         | High Range | IO_L15N_T2_DQS_35            | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| G3         |             | High Range | IO_L20N_T3_35                | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| G3         | uart0_tx    | High Range | IO_L20N_T3_35                | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | G4         | rs1         | High Range | IO_L20P_T3_35                | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | G5         |             | High Range | VCCO_35                      | VCCO        |             |      35 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | G6         | db1[1]      | High Range | IO_L19P_T3_35                | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |

@@ -6,7 +6,7 @@
 <Project Version="7" Minor="49" Path="/home/lcdiazf/Documents/Embebidos/HMI/build/gateware/__main__.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="3ccdbfb241d04d058a9f8981472590fb"/>
+    <Option Name="Id" Val="942f88a01de64083b13e8eb1fb31bbe8"/>
     <Option Name="Part" Val="xc7a100tcsg324-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>

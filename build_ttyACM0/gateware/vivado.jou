@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Jun 25 17:18:53 2020
+# Process ID: 98433
+# Current directory: /home/lcdiazf/Documents/Embebidos/HMI/build/gateware
+# Command line: vivado -mode batch -source __main__.tcl
+# Log file: /home/lcdiazf/Documents/Embebidos/HMI/build/gateware/vivado.log
+# Journal file: /home/lcdiazf/Documents/Embebidos/HMI/build/gateware/vivado.jou
+#-----------------------------------------------------------
+source __main__.tcl

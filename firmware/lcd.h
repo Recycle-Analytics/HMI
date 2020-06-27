@@ -1,5 +1,9 @@
 #include "globalvar.h"
 #include "tiles.h"
+#include "homespun_font.h"
+
+#define CHAR_WIDTH 7
+#define CHAR_HEIGHT 8
 
 static uint16_t convert(uint8_t number)
 {
@@ -36,15 +40,16 @@ static void lcd_write_Odata(unsigned short int value)
 static void lcd_initialize(void)
 {
 //**********INICIALIZACION***********//
-    lcd_write_Oaddr(0x01);
+//   Ili9341
+    lcd_write_Oaddr(0x01);//Software reset
     busy_wait(0.06);
 
-    lcd_write_Oaddr(0x28);
+    lcd_write_Oaddr(0x28);//Display off
 
-    lcd_write_Oaddr(0xc0);
-    lcd_write_Odata(0x23);
+    lcd_write_Oaddr(0xc0);//Power control 1
+    lcd_write_Odata(0x23);//5.05V
 
-    lcd_write_Oaddr(0xc1);
+    lcd_write_Oaddr(0xc1);//Power control 2
     lcd_write_Odata(0x10);
 
     lcd_write_Oaddr(0xc5);
@@ -85,36 +90,77 @@ static void lcd_initialize(void)
     //printf("\nLCD ready\n");
 }
 //Added by Luis Carlos
+
+static void preparePrint(uint16_t posx, uint16_t posy, uint8_t width, uint8_t height){
+    uint16_t xcord=8*(posx-1);
+    uint16_t ycord=8*(posy-1)+0x27;
+
+
+    lcd_write_Oaddr(0x2a);
+    lcd_write_Odata(xcord>>8);
+    lcd_write_Odata(xcord);
+    lcd_write_Odata((xcord+width-0x1)>>8);
+    lcd_write_Odata(xcord+width-0x1);
+
+    lcd_write_Oaddr(0x2b);
+    lcd_write_Odata(ycord>>8);
+    lcd_write_Odata(ycord);
+    lcd_write_Odata((ycord+height-0x1)>>8);
+    lcd_write_Odata(ycord+height-0x1);
+
+    lcd_write_Oaddr(0x2c);
+
+}
+
+static void drawPixel(uint16_t color){
+    lcd_write_Odata(color>>8);
+    lcd_write_Odata(color);
+}
+
 static void print_tile(uint8_t number, uint16_t posx, uint16_t posy){
     uint16_t data[8];
 
     for(uint8_t i=0;i<8;i++){
     data[i]=tiles[number][i];
-    }
+    }  
 
-    uint16_t xcord=8*(posx-1);
-    uint16_t ycord=8*(posy-1)+0x27;
-
-    lcd_write_Oaddr(0x2a);
-    lcd_write_Odata(xcord>>8);
-    lcd_write_Odata(xcord);
-    lcd_write_Odata((xcord+0x7)>>8);
-    lcd_write_Odata(xcord+0x7);
-
-    lcd_write_Oaddr(0x2b);
-    lcd_write_Odata(ycord>>8);
-    lcd_write_Odata(ycord);
-    lcd_write_Odata((ycord+0x7)>>8);
-    lcd_write_Odata(ycord+0x7);
-
-    lcd_write_Oaddr(0x2c);
+    preparePrint(posx, posy, 8, 8);
 
     for (int i=0;i<=7;i++)
     {
         for (int j=0;j<=7;j++)
         {
-            lcd_write_Odata((convert((data[i]>>(14-(j*2)))&0x3))>>8);
-            lcd_write_Odata(convert((data[i]>>(14-(j*2)))&0x3));
+            drawPixel(convert((data[i]>>(14-(j*2)))&0x3));
+        }
+    }
+}
+
+static void printCharacter(uint8_t c, uint16_t posx, uint16_t posy, uint16_t fontColor, uint16_t background){
+    uint8_t i, j;
+
+    // Convert the character to an index
+    c = c & 0x7F;
+    if (c < ' ') {
+        c = 0;
+    } else {
+        c -= ' ';
+    }
+
+    // 'font' is a multidimensional array of [96][char_width]
+    // which is really just a 1D array of size 96*char_width.
+    const uint8_t* chr = font[c*CHAR_WIDTH];
+
+    // Draw pixels
+    preparePrint(posx, posy, CHAR_WIDTH, CHAR_HEIGHT);
+    
+    for (j=0; j<CHAR_WIDTH; j++) {
+        for (i=0; i<CHAR_HEIGHT; i++) {
+
+            if (chr[j] & (1<<i)) {
+                drawPixel(fontColor);
+            }else{
+                drawPixel(background);
+            }
         }
     }
 }

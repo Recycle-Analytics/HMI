@@ -11,7 +11,7 @@ main.o: main.c /opt/liteX/litex/litex/soc/software/include/base/stdio.h \
  /opt/liteX/litex/litex/soc/software/include/hw/common.h \
  /opt/liteX/litex/litex/soc/software/include/base/uart.h \
  /opt/liteX/litex/litex/soc/software/include/base/console.h logic_game.c \
- lcd.h globalvar.h tiles.h
+ lcd.h globalvar.h tiles.h homespun_font.h uart0/uart0.c uart0/uart0.h
 
 /opt/liteX/litex/litex/soc/software/include/base/stdio.h:
 
@@ -46,3 +46,9 @@ lcd.h:
 globalvar.h:
 
 tiles.h:
+
+homespun_font.h:
+
+uart0/uart0.c:
+
+uart0/uart0.h:

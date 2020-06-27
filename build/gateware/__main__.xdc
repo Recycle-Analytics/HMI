@@ -141,6 +141,14 @@ set_property IOSTANDARD LVCMOS33 [get_ports {wr1}]
 set_property LOC H2 [get_ports {rst1}]
 set_property IOSTANDARD LVCMOS33 [get_ports {rst1}]
 
+# uart0:0.tx
+set_property LOC G3 [get_ports {uart0_tx}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uart0_tx}]
+
+# uart0:0.rx
+set_property LOC F3 [get_ports {uart0_rx}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uart0_rx}]
+
 ################################################################################
 # Design constraints
 ################################################################################

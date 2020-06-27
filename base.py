@@ -10,6 +10,7 @@ from litex.build.xilinx import XilinxPlatform
 from litex.soc.integration.soc_core import *
 from litex.soc.integration.builder import *
 from litex.soc.cores import dna
+from litex.soc.cores.uart import UARTPHY, UART
 
 from lcd_core import *
 from btn_itrupt import btnintrupt
@@ -28,14 +29,12 @@ _io = [
         Subsignal("rx", Pins("C4")),
         IOStandard("LVCMOS33")
     ),
-    ("serial", 1,
-        Subsignal("tx", Pins("F3")),
-        Subsignal("rx", Pins("G3")),
+    
+    ("uart0", 0,
+        Subsignal("tx", Pins("G3")),
+        Subsignal("rx", Pins("F3")),
         IOStandard("LVCMOS33")
     ),
-    
-    ("tx2", 0, Pins("G3"), IOStandard("LVCMOS33")),
-    ("rx2", 0, Pins("F3"), IOStandard("LVCMOS33")),
     
     ("user_btn", 0, Pins("M18"), IOStandard("LVCMOS33")),
     ("user_btn", 1, Pins("M17"), IOStandard("LVCMOS33")),
@@ -118,13 +117,22 @@ class BaseSoC(SoCCore):
             platform.request("rst1").eq(self.lcd_core.rst_),
            ]
         self.add_csr("lcd_core")
-        #Serial clone
-        #serial = platform.request("serial", 1)
-        #serial = platform.request("serial", 0)
+        
+        #Uart0
+        self.submodules.uart_phy = UARTPHY(self.platform.request("uart0"),sys_clk_freq, baudrate=115200)
+        self.submodules.uart0 = UART(self.uart_phy)
+        self.add_csr("uart0")
 
 soc = BaseSoC(platform)
 
 # Build --------------------------------------------------------------------------------------------
 
 builder = Builder(soc, output_dir="build", csr_csv="test/csr.csv")
-builder.build()
+vns = builder.build()
+
+# Documentation --------------------------------------------------------------------------------------------
+
+from litex.soc.doc import generate_docs, generate_svd
+soc.do_exit(vns)
+generate_docs(soc, "build/documentation")
+generate_svd(soc, "build/software")

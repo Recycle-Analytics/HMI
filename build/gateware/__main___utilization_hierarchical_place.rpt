@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Wed Jun 17 13:00:14 2020
+| Date         : Thu Jun 25 20:28:38 2020
 | Host         : CoolerPc running 64-bit Ubuntu 20.04 LTS
 | Command      : report_utilization -hierarchical -file __main___utilization_hierarchical_place.rpt
 | Design       : __main__
@@ -21,11 +21,11 @@ Table of Contents
 +----------------------------+------------------+------------+------------+---------+------+------+--------+--------+------------+
 |          Instance          |      Module      | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
 +----------------------------+------------------+------------+------------+---------+------+------+--------+--------+------------+
-| __main__                   |            (top) |       2309 |       2293 |      16 |    0 | 1792 |     14 |      8 |          4 |
-|   (__main__)               |            (top) |        293 |        277 |      16 |    0 |  554 |     13 |      0 |          0 |
-|   VexRiscv                 |         VexRiscv |       2016 |       2016 |       0 |    0 | 1238 |      1 |      8 |          4 |
-|     (VexRiscv)             |         VexRiscv |        857 |        857 |       0 |    0 | 1019 |      0 |      2 |          4 |
-|     IBusCachedPlugin_cache | InstructionCache |        703 |        703 |       0 |    0 |   98 |      1 |      1 |          0 |
+| __main__                   |            (top) |       2432 |       2400 |      32 |    0 | 1956 |     14 |      8 |          4 |
+|   (__main__)               |            (top) |        391 |        359 |      32 |    0 |  718 |     13 |      0 |          0 |
+|   VexRiscv                 |         VexRiscv |       2042 |       2042 |       0 |    0 | 1238 |      1 |      8 |          4 |
+|     (VexRiscv)             |         VexRiscv |        860 |        860 |       0 |    0 | 1019 |      0 |      2 |          4 |
+|     IBusCachedPlugin_cache | InstructionCache |        726 |        726 |       0 |    0 |   98 |      1 |      1 |          0 |
 |     dataCache_1_           |        DataCache |        456 |        456 |       0 |    0 |  121 |      0 |      5 |          0 |
 +----------------------------+------------------+------------+------------+---------+------+------+--------+--------+------------+
 * Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining

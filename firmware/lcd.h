@@ -153,11 +153,11 @@ static void printCharacter(uint8_t c, uint16_t posx, uint16_t posy, uint16_t fon
     }  
 
     // Draw pixels
-    preparePrint(posx, posy, CHAR_HEIGHT, CHAR_WIDTH);
+    preparePrint(posx*2, posy*2, CHAR_HEIGHT*2, CHAR_WIDTH*2);
     
-    for (j=CHAR_WIDTH; j>0; j--) {
-        for (i=0; i<CHAR_HEIGHT; i++) {
-            if (chr[j-1] & (1<<i)) {
+    for (j=CHAR_WIDTH*2; j>0; j--) {
+        for (i=0; i<CHAR_HEIGHT*2; i++) {
+            if (chr[j/2-1] & (1<<i/2)) {
                 drawPixel(fontColor);
             }else{
                 drawPixel(background);
@@ -166,11 +166,11 @@ static void printCharacter(uint8_t c, uint16_t posx, uint16_t posy, uint16_t fon
     }
 }
 
-static void printString(char *c, uint16_t posx, uint16_t posy, uint16_t fontColor, uint16_t background){
+static void printString(char *c, uint16_t posy, uint16_t posx, uint16_t fontColor, uint16_t background){
     uint8_t i=0;
     while(1){
         if(c[i]==NULL)return;
-        printCharacter(c[i], posx, 41-posy-i, fontColor, background);
+        printCharacter(c[i], posx, 20-posy-i, fontColor, background);
         i++;
     }
 }

@@ -132,12 +132,19 @@ static void console_service(void)
 			puts("HOLA MUNDO");
 	        while(str == NULL)str = readstr();
 	        token = get_token(&str);
-	        printString("a", 1, 1, 0x0000, 0x86c0);
-	        printString("5", 30, 40, 0x0000, 0x86c0);
-			printString("Center", 15, 20, 0x0000, 0x86c0);
-			printString("Top", 1, 20, 0x0000, 0x86c0);
-			printString("Text:", 15, 1, 0x0000, 0x86c0);
-			printString(token, 15, 6, 0x0000, 0x86c0);
+	        printString("RecycleAnalytics", 1, 1, 0x0000, 0x86c0);
+	        printString("UN", 18, 1, 0x0000, 0x86c0);
+	        printString("Hora 20:20", 10, 3, 0x0000, 0x86c0);
+	        printString("Peso: Kg", 1, 5, 0x0000, 0x86c0);
+	        printString("Humedad:67%", 1, 6, 0x0000, 0x86c0);
+	        printString("Temperatura:22^C", 1, 7, 0x0000, 0x86c0);
+	        printString("Gas:*", 1, 9, 0x0000, 0x86c0);
+	        printString("Fuego:x", 1, 10, 0x0000, 0x86c0);
+	        printString("ID:10001", 1, 14, 0x0000, 0x86c0);
+	        printString("Ruta:X105-1", 9, 12, 0x0000, 0x86c0);
+	        printString("-2", 18, 13, 0x0000, 0x86c0);
+	        printString("-3", 18, 14, 0x0000, 0x86c0);
+	        printString(token, 6, 5, 0x0000, 0x86c0);
 			}
 		}
 	else if(strcmp(token, "5") == 0){

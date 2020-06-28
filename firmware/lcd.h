@@ -50,52 +50,52 @@ static void lcd_initialize(void)
     lcd_write_Odata(0x23);//5.05V
 
     lcd_write_Oaddr(0xc1);//Power control 2
-    lcd_write_Odata(0x10);
+    lcd_write_Odata(0x10);//VCIx2
 
-    lcd_write_Oaddr(0xc5);
+    lcd_write_Oaddr(0xc5);//VCOM Control 1
     lcd_write_Odata(0x2b);
-    lcd_write_Odata(0x2b);    
+    lcd_write_Odata(0x2b);
 
-    lcd_write_Oaddr(0xc7);
+    lcd_write_Oaddr(0xc7);//VCOM Control 1
     lcd_write_Odata(0xc0);
 
-    lcd_write_Oaddr(0x36);
+    lcd_write_Oaddr(0x36);//Memory Access Control
     lcd_write_Odata(0x88);
 
-    lcd_write_Oaddr(0x3a);
-    lcd_write_Odata(0x55);
+    lcd_write_Oaddr(0x3a);//Pixel Format Set
+    lcd_write_Odata(0x55);//16 bits / pixel
 
-    lcd_write_Oaddr(0xb1);
+    lcd_write_Oaddr(0xb1);//Frame Rate Control (In Normal Mode / Full colors)
     lcd_write_Odata(0x1b);
 
-    lcd_write_Oaddr(0xb7);
+    lcd_write_Oaddr(0xb7);//Entry Mode Set
     lcd_write_Odata(0x07);
 
-    lcd_write_Oaddr(0x11);
+    lcd_write_Oaddr(0x11);//Sleep out
 
-    lcd_write_Oaddr(0x21);
+    lcd_write_Oaddr(0x21);//Inversion ON (?)
 
-    lcd_write_Oaddr(0x29);
+    lcd_write_Oaddr(0x29);//Display ON
 
     busy_wait(1.5);
     busy_wait(5);
 
 //**********MODO VENTANA 30X30 TILES***********//
-    lcd_write_Oaddr(0x12);
-    lcd_write_Oaddr(0x30);
-    lcd_write_Odata(0x00);
-    lcd_write_Odata(0x29);
-    lcd_write_Odata(0x01);
-    lcd_write_Odata(0x18);
+    //lcd_write_Oaddr(0x12);//Partial mode ON
+    
+    //lcd_write_Oaddr(0x30);//Partial area
+    //lcd_write_Odata(0x00);
+    //lcd_write_Odata(0x29);
+    //lcd_write_Odata(0x01);
+    //lcd_write_Odata(0x18);
     //printf("\nLCD ready\n");
 }
 //Added by Luis Carlos
 
 static void preparePrint(uint16_t posx, uint16_t posy, uint8_t width, uint8_t height){
     uint16_t xcord=8*(posx-1);
-    uint16_t ycord=8*(posy-1)+0x27;
-
-
+    uint16_t ycord=8*(posy-1);
+    
     lcd_write_Oaddr(0x2a);
     lcd_write_Odata(xcord>>8);
     lcd_write_Odata(xcord);
@@ -170,7 +170,7 @@ static void printString(char *c, uint16_t posx, uint16_t posy, uint16_t fontColo
     uint8_t i=0;
     while(1){
         if(c[i]==NULL)return;
-        printCharacter(c[i], posx+i, posy, fontColor, background);
+        printCharacter(c[i], posx, 41-posy-i, fontColor, background);
         i++;
     }
 }
@@ -179,7 +179,7 @@ static void fillScreen(void)
 {
     for (int i=1;i<=30;i++)
     {
-        for (int j=1;j<=30;j++)
+        for (int j=1;j<=40;j++)
         {
             print_tile(GROUND,i,j);
         }

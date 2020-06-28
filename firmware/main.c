@@ -132,8 +132,12 @@ static void console_service(void)
 			puts("HOLA MUNDO");
 	        while(str == NULL)str = readstr();
 	        token = get_token(&str);
-	        printString(token, 1, 1, 0x0000, 0x86c0);
-			busy_wait(1000);
+	        printString("a", 1, 1, 0x0000, 0x86c0);
+	        printString("5", 30, 40, 0x0000, 0x86c0);
+			printString("Center", 15, 20, 0x0000, 0x86c0);
+			printString("Top", 1, 20, 0x0000, 0x86c0);
+			printString("Text:", 15, 1, 0x0000, 0x86c0);
+			printString(token, 15, 6, 0x0000, 0x86c0);
 			}
 		}
 	else if(strcmp(token, "5") == 0){

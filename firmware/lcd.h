@@ -137,7 +137,7 @@ static void print_tile(uint8_t number, uint16_t posx, uint16_t posy){
 
 static void printCharacter(uint8_t c, uint16_t posx, uint16_t posy, uint16_t fontColor, uint16_t background){
     uint8_t i, j;
-
+    uint16_t chr[7];
     // Convert the character to an index
     c = c & 0x7F;
     if (c < ' ') {
@@ -148,20 +148,30 @@ static void printCharacter(uint8_t c, uint16_t posx, uint16_t posy, uint16_t fon
 
     // 'font' is a multidimensional array of [96][char_width]
     // which is really just a 1D array of size 96*char_width.
-    const uint8_t* chr = font[c*CHAR_WIDTH];
+    for(uint8_t i=0;i<7;i++){
+        chr[i]=font[c][i];
+    }  
 
     // Draw pixels
-    preparePrint(posx, posy, CHAR_WIDTH, CHAR_HEIGHT);
+    preparePrint(posx, posy, CHAR_HEIGHT, CHAR_WIDTH);
     
-    for (j=0; j<CHAR_WIDTH; j++) {
+    for (j=CHAR_WIDTH; j>0; j--) {
         for (i=0; i<CHAR_HEIGHT; i++) {
-
-            if (chr[j] & (1<<i)) {
+            if (chr[j-1] & (1<<i)) {
                 drawPixel(fontColor);
             }else{
                 drawPixel(background);
             }
         }
+    }
+}
+
+static void printString(char *c, uint16_t posx, uint16_t posy, uint16_t fontColor, uint16_t background){
+    uint8_t i=0;
+    while(1){
+        if(c[i]==NULL)return;
+        printCharacter(c[i], posx+i, posy, fontColor, background);
+        i++;
     }
 }
 
@@ -172,6 +182,19 @@ static void fillScreen(void)
         for (int j=1;j<=30;j++)
         {
             print_tile(GROUND,i,j);
+        }
+    }
+}
+
+static void fontTest(void){
+    fillScreen();
+    char c=' ';
+    for (int i=0;i<=30;i++)
+    {
+        for (int j=0;j<=30;j++)
+        {
+            if(i*j>98)return;
+            printCharacter(c+i*j, i, j, 0x0000, 0x86c0);
         }
     }
 }

@@ -125,18 +125,20 @@ static void console_service(void)
 	else if(strcmp(token, "3") == 0)
 		fill();
 	else if(strcmp(token, "4") == 0){
+		initScreen();
+		fill();
 		while(1){
+		str=NULL;
 			puts("HOLA MUNDO");
+	        while(str == NULL)str = readstr();
+	        token = get_token(&str);
+	        printString(token, 1, 1, 0x0000, 0x86c0);
 			busy_wait(1000);
 			}
 		}
 	else if(strcmp(token, "5") == 0){
 		initScreen();
-		fill();
-	    printCharacter('!', 10, 10, 0x7bef, 0x86c0);
-	    printCharacter('A', 12, 10, 0x0BB0, 0x86c0);
-	    printCharacter('a', 14, 10, 0xce59, 0x86c0);
-	    printCharacter('2', 16, 10, 0x0BB0, 0x86c0);
+		fontTest();
 	}
 	prompt();
 }

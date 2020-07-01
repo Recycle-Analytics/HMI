@@ -18,7 +18,7 @@ Descripción general del proyecto
 
 A nivel técnico el proyecto se compone de una implementación de un System On Chip (SoC), con el procesador SoftCore VexRiscV y los correspondientes periféricos. La comunicación entre el procesador y los periféricos es mediante la implementación del bus Wishbone.
 
-La pantalla de visualización es el chip ILI9341 que se comunica en paralelo con el soc. Para controlar la pantalla se diseñó desde el hardware un periférico que escribe en los registros de la pantalla, para comunicar el soc con un un computador se usan dos perifericos: UART y UART_PHY. 
+La pantalla de visualización es el chip ILI9341 que se comunica en paralelo con el soc. Para controlar la pantalla se diseñó desde el hardware un periférico que escribe en los registros de la pantalla, para comunicar el soc con un computador se usa el periferico UART. 
 
 ![HMI Soc](Docs/Soc/SOC.png)
 
@@ -37,9 +37,7 @@ El periferico diseñado en este proyecto fue un controlador del chip de la panta
 * Registros de control y direcciones de comandos del chip ILI9341.
 * Diagrama de tiempos del chip.
 
-Para controlar la pantalla se disponen del los pines:
-
-La shield del chip tiene los siguientes pines:
+El shield del chip de la pantalla tiene los siguientes pines:
 * DB[7:0]
 * RS
 * WR
@@ -67,4 +65,50 @@ El mapa de memoria se relaciona a continuación.
 
 Las señales de control START y BUSY respectivamente da inicio al ciclo de escritura y asegura que no se realice un ciclo mientras se este realizando otro en ese momento. Para efectos de generalidad, se deja como registro el valor que se escribe en el pin CS, para casos en los que se necesite manejar más de una pantalla. Queda pendiente realizar la generalidad para el caso en que se necesite leer datos de los registros del chip.
 
+La diagrama de estados del modulo lcd_core se muestra a continuación. 
+
 ![ILI9341 FSM ](Docs/ili9341/FSM_lcd.png)
+
+Para relizar una escritura en la pantalla se deben escribir los registros del periferico en este orden, para escribir en la dirección "address":
+
+* address   ->  ADDR
+* 0x00      ->  DATA
+* 0         ->  OPTION
+* 1         ->  START
+
+Un ciclo de relog después
+
+* 0         ->  START
+* wait BUSY ==  0
+
+Para escribir datos o parametros ("data") a los comandos de la pantalla se ejecuta una secuencia similar con la diferencia de que la opción de datos es "1".
+
+* 0x00      ->  ADDR
+* data      ->  DATA
+* 1         ->  OPTION
+* 1         ->  START
+
+Un ciclo de relog después
+
+* 0         ->  START
+* wait BUSY ==  0
+
+Estas funciones de escritura en los registros se detallan en la sección de firmware.
+
+## Resultado final
+<img src="Docs/ili9341/FinalResult.jpeg" alt="drawing" width="400"/>
+
+## Referencias
+
+Para el desarrollo del proyecto ses usaron distintas herramientas, sus fuentes e instructivos se muestran a continuación:
+
+- [Migen](https://m-labs.hk/gateware/migen/): Descripción de hardware en python
+- [Litex](https://github.com/enjoy-digital/litex): Construcción e interconección del Soc
+- [VexRiscv](https://github.com/SpinalHDL/VexRiscv): Cpu del soc
+- [Vivado](https://www.xilinx.com/products/design-tools/vivado.html): Herramienta de síntesis de Digilent
+- [Custom Fonts for microcontrollers](https://jared.geek.nz/2014/jan/custom-fonts-for-microcontrollers): Generador personalizado de fuentes para microcontroladores
+
+
+
+
+

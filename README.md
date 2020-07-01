@@ -2,7 +2,8 @@
 HMI used to show information about truck status and collection plan.
 
 ## El proyecto
-Descripción general del proyecto
+
+Este proyecto es un desarrollo de los sistemas embebidos enfocado al IoT que busca sistematizar y recolectar la información de toda la infraestructura de contenedores y vehículos que componen el sistema de desechos solidos de una ciudad. El objetivo de este proyecto es facilitar y analizar la informacion en tiempo real del las basuras desechadas en los espacios publicos destinados a esto. Por medio de sistemas digitales y las redes de telecomunicaciones se pretende implementar sensores que reconozcan el contenido de los contenedores que se encuentran distribuidos a los largo de la ciudad, enviar la información a tráves de internet y presentarla en una aplicación web. Este proyecto incluye la monitorización de los vehículos designados a la recoleccion movil de desechos. Con esto se espera que el sistema de recolección de desechos tenga una base de datos disponible para estudiar y analizar la evolución en el tiempo del proceso de almacenamiento y recolección de basuras, de esta manera lograr entender el comportamiento de los ciudadanos al depositar sus respectivas basuras en los sitios correspondientes y hacer mas eficiente el proceso de recolección en la ciudad.
 
 ### Especificaciones
 

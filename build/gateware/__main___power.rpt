@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Thu Jun 25 20:29:14 2020
+| Date             : Tue Jun 30 17:56:15 2020
 | Host             : CoolerPc running 64-bit Ubuntu 20.04 LTS
 | Command          : report_power -file __main___power.rpt
 | Design           : __main__
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 25.675 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 22.183 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                     |
 | Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 24.866                           |
+| Dynamic (W)              | 21.374                           |
 | Device Static (W)        | 0.809                            |
 | Effective TJA (C/W)      | 4.6                              |
 | Max Ambient (C)          | 0.0                              |
@@ -52,19 +52,19 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Slice Logic              |     8.194 |     4953 |       --- |             --- |
-|   LUT as Logic           |     6.999 |     2400 |     63400 |            3.79 |
-|   CARRY4                 |     0.763 |      149 |     15850 |            0.94 |
-|   Register               |     0.426 |     1956 |    126800 |            1.54 |
+| Slice Logic              |     6.531 |     4606 |       --- |             --- |
+|   LUT as Logic           |     5.657 |     2293 |     63400 |            3.62 |
+|   CARRY4                 |     0.653 |      131 |     15850 |            0.83 |
+|   Register               |     0.215 |     1792 |    126800 |            1.41 |
 |   BUFG                   |     0.006 |        1 |        32 |            3.13 |
-|   LUT as Distributed RAM |    <0.001 |       32 |     19000 |            0.17 |
+|   LUT as Distributed RAM |    <0.001 |       16 |     19000 |            0.08 |
 |   Others                 |     0.000 |       10 |       --- |             --- |
-| Signals                  |    10.202 |     4275 |       --- |             --- |
-| Block RAM                |     2.123 |       18 |       135 |           13.33 |
-| DSPs                     |     3.836 |        4 |       240 |            1.67 |
-| I/O                      |     0.510 |       37 |       210 |           17.62 |
+| Signals                  |     8.378 |     4055 |       --- |             --- |
+| Block RAM                |     2.147 |       18 |       135 |           13.33 |
+| DSPs                     |     3.837 |        4 |       240 |            1.67 |
+| I/O                      |     0.481 |       35 |       210 |           16.67 |
 | Static Power             |     0.809 |          |           |                 |
-| Total                    |    25.675 |          |           |                 |
+| Total                    |    22.183 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,16 +74,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |    24.803 |      24.234 |      0.569 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.110 |       0.018 |      0.093 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.139 |       0.135 |      0.004 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |    21.335 |      20.766 |      0.569 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.109 |       0.017 |      0.093 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.132 |       0.128 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.177 |       0.154 |      0.023 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.179 |       0.155 |      0.023 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -141,10 +141,10 @@ Table of Contents
 +----------------------------+-----------+
 | Name                       | Power (W) |
 +----------------------------+-----------+
-| __main__                   |    24.866 |
-|   VexRiscv                 |    19.168 |
-|     IBusCachedPlugin_cache |     2.818 |
-|     dataCache_1_           |     3.057 |
+| __main__                   |    21.374 |
+|   VexRiscv                 |    16.238 |
+|     IBusCachedPlugin_cache |     2.876 |
+|     dataCache_1_           |     2.409 |
 +----------------------------+-----------+
 
 

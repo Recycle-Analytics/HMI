@@ -1,0 +1,20 @@
+Data format
+
+{OnOffState , id   , Hora    , Peso , Humedad, Temperatura, Gas,   Fuego, Ruta, SigContenedor, Progreso}
+{1 ,10007, 19:36:10, 15885, 65,      21,          0,     0,     R003, 21,            10}
+
+
+Screen format
+
+RecycleAnalytics_UN//
+_________Hora_20:20//
+Peso:4Kg___________/
+Humedad:67%________/
+Temperatura:22^C___//
+Gas:*______________/
+Fuego:x____________//
+________Ruta:X105-1/
+_________________-2/
+ID:10001_________-3/
+
+RecycleAnalytics_UN//_________Hora_20:20//Peso:4Kg___________/Humedad:67%________/Temperatura:22^C___//Gas:*______________/Fuego:x____________//________Ruta:X105-1/_________________-2/ID:10001_________-3/

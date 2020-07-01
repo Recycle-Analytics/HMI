@@ -9,6 +9,8 @@
 #define BACKGROUND_COLOR 0x86c0
 #define ERROR_COLOR 0xF800
 
+static uint8_t isInitialized = 0;
+
 static uint16_t convert(uint8_t number)
 {
     if (number==0x0)return 0x86c0;
@@ -175,17 +177,19 @@ static void printCharacter(uint8_t c, uint16_t posx, uint16_t posy, uint16_t fon
 static void printString(char *c, uint16_t posx, uint16_t posy, uint16_t fontColor, uint16_t background){
     uint8_t i=0;
     while(1){
-        if(c[i]==NULL)return;
+        if(!c[i])return;
         printCharacter(c[i], posx+i, posy, fontColor, background);
         i++;
     }
 }
 
+//Unused function to print whole screen from characters chain
+/*
 static void printWholeScreen(char *c, uint16_t fontColor, uint16_t background){
     uint8_t i=0;
     uint16_t x=1, y=1;
     while(1){
-        if(c[i]==NULL)return;
+        if(!c[i])return;
         
         switch (c[i]){
             case '/':
@@ -203,6 +207,7 @@ static void printWholeScreen(char *c, uint16_t fontColor, uint16_t background){
         i++;
     }
 }
+*/
 
 static void fillScreen(void)
 {
@@ -221,7 +226,7 @@ static void initHMI(void){
 			
         printString("RecycleAnalytics UN", 1, 1, 0x0000, 0x86c0);
         
-        printString("Hora", 10, 3, 0x0000, 0x86c0);
+        printString("Hora ", 10, 3, 0x0000, 0x86c0);
         
         printString("Peso:", 1, 5, 0x0000, 0x86c0);
         printString("Humedad:", 1, 6, 0x0000, 0x86c0);
@@ -230,33 +235,50 @@ static void initHMI(void){
         printString("Gas:", 1, 9, 0x0000, 0x86c0);
         printString("Fuego:", 1, 10, 0x0000, 0x86c0);
         
-        printString("Ruta:X105-1", 9, 12, 0x0000, 0x86c0);
-        printString("-2", 18, 13, 0x0000, 0x86c0);
-        printString("-3", 18, 14, 0x0000, 0x86c0);
+        printString("Ruta", 12, 10, 0x0000, 0x86c0);
         
         printString("ID:", 1, 14, 0x0000, 0x86c0);
 }
 
+static void printOffScreen(void){
+		fillScreen();
+			
+        printString("RecycleAnalytics UN", 1, 1, FONT_COLOR, BACKGROUND_COLOR);
+        
+        printString("OFF", 8, 7, ERROR_COLOR, BACKGROUND_COLOR);
+}
+
 static void printData(char *c){
     uint8_t i=0, nData=0, deltaX=0;
+    if(c[0]!='{')return;
     while(1){
         switch(c[i]){
             case '}':
+                //Progress
+                printString("%  ", 12+deltaX, 13, FONT_COLOR, BACKGROUND_COLOR);
                 return;
             break;
             case ',':
                 switch(nData){
                     case 3:
-                        //Peso
+                        //Weigth
                         printString("Kg   ", 6+deltaX, 5, FONT_COLOR, BACKGROUND_COLOR);
                     break;
                     case 4:
-                        //Humedad
+                        //Humity
                         printString("%    ", 9+deltaX, 6, FONT_COLOR, BACKGROUND_COLOR);
                     break;
                     case 5:
-                        //Temperatura
+                        //Temperature
                         printString("^C     ", 13+deltaX, 7, FONT_COLOR, BACKGROUND_COLOR);
+                    break;
+                    case 8:
+                        //Route
+                        printString("-", 12+deltaX, 12, FONT_COLOR, BACKGROUND_COLOR);
+                    break;
+                    case 9:
+                        //Next bin
+                        printString(" ", 17+deltaX, 12, FONT_COLOR, BACKGROUND_COLOR);
                     break;
                 }
                 nData++;
@@ -268,28 +290,40 @@ static void printData(char *c){
             default:
                 switch(nData){
                     case 0:
+                        //OnOff state
+                        if(c[i]=='0'){
+                            printOffScreen();
+                            isInitialized=0;
+                            return;
+                        }
+                        if(isInitialized==0){
+                            initHMI();
+                            isInitialized=1;
+                        }
+                    break;
+                    case 1:
                         //Id
                         printCharacter(c[i], 4+deltaX, 14, FONT_COLOR, BACKGROUND_COLOR);
                         deltaX++;
                     break;
                     case 2:
-                        //Hora
+                        //Hour
                         if(deltaX>4)break;
                         printCharacter(c[i], 15+deltaX, 3, FONT_COLOR, BACKGROUND_COLOR);
                         deltaX++;
                     break;
                     case 3:
-                        //Peso
+                        //Weigth
                         printCharacter(c[i], 6+deltaX, 5, FONT_COLOR, BACKGROUND_COLOR);
                         deltaX++;
                     break;
                     case 4:
-                        //Humedad
+                        //Humity
                         printCharacter(c[i], 9+deltaX, 6, FONT_COLOR, BACKGROUND_COLOR);
                         deltaX++;
                     break;
                     case 5:
-                        //Temperatura
+                        //Temperature
                         printCharacter(c[i], 13+deltaX, 7, FONT_COLOR, BACKGROUND_COLOR);
                         deltaX++;
                     break;
@@ -304,7 +338,7 @@ static void printData(char *c){
                         }
                     break;
                     case 7:
-                        //Fuego
+                        //Fire
                         switch(c[i]){
                             case '1':
                                 printCharacter('X', 7, 10, ERROR_COLOR, BACKGROUND_COLOR);
@@ -313,32 +347,24 @@ static void printData(char *c){
                                 printCharacter('@', 7, 10, FONT_COLOR, BACKGROUND_COLOR);
                         }
                     break;
+                    case 8:
+                        //Route
+                        printCharacter(c[i], 12+deltaX, 12, FONT_COLOR, BACKGROUND_COLOR);
+                        deltaX++;
+                    break;
+                    case 9:
+                        //Next bin
+                        printCharacter(c[i], 17+deltaX, 12, FONT_COLOR, BACKGROUND_COLOR);
+                        deltaX++;
+                    break;
+                    case 10:
+                        //Progress
+                        printCharacter(c[i], 12+deltaX, 13, FONT_COLOR, BACKGROUND_COLOR);
+                        deltaX++;
+                    break;
                     }
         }
         i++;
-    }
-}
-
-static void printOffScreen(void){
-		fillScreen();
-			
-        printString("RecycleAnalytics UN", 1, 1, FONT_COLOR, BACKGROUND_COLOR);
-        
-        printString("Hora 20:20", 10, 3, FONT_COLOR, BACKGROUND_COLOR);
-        
-        printString("OFF", 8, 7, ERROR_COLOR, BACKGROUND_COLOR);
-}
-
-static void fontTest(void){
-    fillScreen();
-    char c=' ';
-    for (int i=0;i<=30;i++)
-    {
-        for (int j=0;j<=30;j++)
-        {
-            if(i*j>98)return;
-            printCharacter(c+i*j, i, j, 0x0000, 0x86c0);
-        }
     }
 }
 

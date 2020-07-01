@@ -69,7 +69,3 @@ set_property src_info {type:XDC file:1 line:137 export:INPUT save:INPUT read:REA
 set_property LOC H1 [get_ports {wr1}]
 set_property src_info {type:XDC file:1 line:141 export:INPUT save:INPUT read:READ} [current_design]
 set_property LOC H2 [get_ports {rst1}]
-set_property src_info {type:XDC file:1 line:145 export:INPUT save:INPUT read:READ} [current_design]
-set_property LOC G3 [get_ports {uart0_tx}]
-set_property src_info {type:XDC file:1 line:149 export:INPUT save:INPUT read:READ} [current_design]
-set_property LOC F3 [get_ports {uart0_rx}]

@@ -2,7 +2,7 @@
 
 <device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd" >
     <vendor>litex</vendor>
-    <name>UART0</name>
+    <name>LCD_CORE</name>
 
     <addressUnitBits>8</addressUnitBits>
     <width>32</width>
@@ -855,108 +855,6 @@ writing to ``update_value``.]]></description>
                             <name>cs_</name>
                             <msb>0</msb>
                             <bitRange>[0:0]</bitRange>
-                            <lsb>0</lsb>
-                        </field>
-                    </fields>
-                </register>
-            </registers>
-            <addressBlock>
-                <offset>0</offset>
-                <size>0x18</size>
-                <usage>registers</usage>
-            </addressBlock>
-        </peripheral>
-        <peripheral>
-            <name>UART0</name>
-            <baseAddress>0x82004000</baseAddress>
-            <groupName>UART0</groupName>
-            <registers>
-                <register>
-                    <name>RXTX</name>
-                    <addressOffset>0x0000</addressOffset>
-                    <resetValue>0x00</resetValue>
-                    <size>8</size>
-                    <access>read-write</access>
-                    <fields>
-                        <field>
-                            <name>rxtx</name>
-                            <msb>7</msb>
-                            <bitRange>[7:0]</bitRange>
-                            <lsb>0</lsb>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>TXFULL</name>
-                    <addressOffset>0x0004</addressOffset>
-                    <resetValue>0x00</resetValue>
-                    <size>8</size>
-                    <access>read-only</access>
-                    <fields>
-                        <field>
-                            <name>txfull</name>
-                            <msb>0</msb>
-                            <bitRange>[0:0]</bitRange>
-                            <lsb>0</lsb>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>RXEMPTY</name>
-                    <addressOffset>0x0008</addressOffset>
-                    <resetValue>0x00</resetValue>
-                    <size>8</size>
-                    <access>read-only</access>
-                    <fields>
-                        <field>
-                            <name>rxempty</name>
-                            <msb>0</msb>
-                            <bitRange>[0:0]</bitRange>
-                            <lsb>0</lsb>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>EV_STATUS</name>
-                    <addressOffset>0x000c</addressOffset>
-                    <resetValue>0x00</resetValue>
-                    <size>8</size>
-                    <access>read-write</access>
-                    <fields>
-                        <field>
-                            <name>status</name>
-                            <msb>1</msb>
-                            <bitRange>[1:0]</bitRange>
-                            <lsb>0</lsb>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>EV_PENDING</name>
-                    <addressOffset>0x0010</addressOffset>
-                    <resetValue>0x00</resetValue>
-                    <size>8</size>
-                    <access>read-write</access>
-                    <fields>
-                        <field>
-                            <name>pending</name>
-                            <msb>1</msb>
-                            <bitRange>[1:0]</bitRange>
-                            <lsb>0</lsb>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>EV_ENABLE</name>
-                    <addressOffset>0x0014</addressOffset>
-                    <resetValue>0x00</resetValue>
-                    <size>8</size>
-                    <access>read-write</access>
-                    <fields>
-                        <field>
-                            <name>enable</name>
-                            <msb>1</msb>
-                            <bitRange>[1:0]</bitRange>
                             <lsb>0</lsb>
                         </field>
                     </fields>

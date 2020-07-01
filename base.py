@@ -30,12 +30,6 @@ _io = [
         IOStandard("LVCMOS33")
     ),
     
-    ("uart0", 0,
-        Subsignal("tx", Pins("G3")),
-        Subsignal("rx", Pins("F3")),
-        IOStandard("LVCMOS33")
-    ),
-    
     ("user_btn", 0, Pins("M18"), IOStandard("LVCMOS33")),
     ("user_btn", 1, Pins("M17"), IOStandard("LVCMOS33")),
     ("user_btn", 2, Pins("P18"), IOStandard("LVCMOS33")),
@@ -117,20 +111,15 @@ class BaseSoC(SoCCore):
             platform.request("rst1").eq(self.lcd_core.rst_),
            ]
         self.add_csr("lcd_core")
-        
-        #Uart0
-        self.submodules.uart_phy = UARTPHY(self.platform.request("uart0"),sys_clk_freq, baudrate=115200)
-        self.submodules.uart0 = UART(self.uart_phy)
-        self.add_csr("uart0")
 
 soc = BaseSoC(platform)
 
 # Build --------------------------------------------------------------------------------------------
 
-builder = Builder(soc, output_dir="build", csr_csv="test/csr.csv")
+builder = Builder(soc, output_dir="build", csr_csv="registers/csr.csv")
 vns = builder.build()
 
-# Documentation --------------------------------------------------------------------------------------------
+# Documentation ------------------------------------------------------------------------------------
 
 from litex.soc.doc import generate_docs, generate_svd
 soc.do_exit(vns)

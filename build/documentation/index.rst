@@ -25,7 +25,6 @@ Register Groups
     timer0
     buttons
     lcd_core
-    uart0
 
 Indices and tables
 ==================

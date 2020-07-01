@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Thu Jun 25 20:28:39 2020
+| Date         : Tue Jun 30 17:55:42 2020
 | Host         : CoolerPc running 64-bit Ubuntu 20.04 LTS
 | Command      : report_control_sets -verbose -file __main___control_sets.rpt
 | Design       : __main__
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |   100 |
-|    Minimum number of control sets                        |   100 |
+| Total control sets                                       |    81 |
+|    Minimum number of control sets                        |    81 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   188 |
+| Unused register locations in slices containing registers |   144 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |   100 |
-| >= 0 to < 4        |     3 |
-| >= 4 to < 6        |    24 |
-| >= 6 to < 8        |     5 |
-| >= 8 to < 10       |    33 |
+| Total control sets |    81 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |    16 |
+| >= 6 to < 8        |     4 |
+| >= 8 to < 10       |    28 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |    35 |
+| >= 16              |    31 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              85 |           37 |
+| No           | No                    | No                     |              78 |           35 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             317 |          128 |
-| Yes          | No                    | No                     |            1041 |          373 |
+| No           | Yes                   | No                     |             234 |           95 |
+| Yes          | No                    | No                     |            1002 |          358 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             513 |          170 |
+| Yes          | Yes                   | No                     |             478 |          164 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,106 +73,87 @@ Table of Contents
 +-------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------+------------------+----------------+--------------+
 |    Clock Signal   |                                     Enable Signal                                    |                             Set/Reset Signal                            | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------+------------------+----------------+--------------+
-|  clk100_IBUF_BUFG | uart0_tx_i_1_n_0                                                                     | int_rst                                                                 |                1 |              1 |         1.00 |
-|  clk100_IBUF_BUFG | serial_tx_i_1_n_0                                                                    | int_rst                                                                 |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG | serial_tx_i_1_n_0                                                                    | soc_int_rst                                                             |                1 |              1 |         1.00 |
 |  clk100_IBUF_BUFG | VexRiscv/_zz_213_                                                                    | VexRiscv/dataCache_1_/reset0                                            |                1 |              3 |         3.00 |
-|  clk100_IBUF_BUFG | basesoc_uart_rx_fifo_wrport_we__0                                                    | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | uart_phy_sink_ready177_out                                                           | uart_phy_sink_ready1                                                    |                2 |              4 |         2.00 |
-|  clk100_IBUF_BUFG | basesoc_rx_bitcount                                                                  | basesoc_rx_bitcount[3]_i_1_n_0                                          |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | countwr_next_value_ce9                                                               | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/uart0_tx_fifo_level0_reg[1]                          | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/CsrPlugin_hadException_reg[0]                                  | VexRiscv/dataCache_1_/reset0                                            |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | count2_next_value_ce5                                                                | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | uart_phy_rx_bitcount                                                                 | uart_phy_rx_bitcount[3]_i_1_n_0                                         |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | basesoc_uart_tx_fifo_consume[2]_i_1_n_0                                              | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | uart0_tx_fifo_consume[2]_i_1_n_0                                                     | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/basesoc_uart_tx_fifo_level0_reg[1]                   | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | basesoc_sink_ready197_out                                                            | basesoc_sink_ready1                                                     |                2 |              4 |         2.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_138__reg[1]_2                                    | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | rd_next_value1                                                                       | int_rst                                                                 |                2 |              4 |         2.00 |
-|  clk100_IBUF_BUFG | uart0_rx_fifo_wrport_we__0                                                           | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_138__reg[1]_0                                    | int_rst                                                                 |                1 |              4 |         4.00 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_7[0]             |                3 |              5 |         1.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_138__reg[1][0]                                   | int_rst                                                                 |                2 |              5 |         2.50 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/uart0_tx_fifo_level0_reg[4][0]                       | int_rst                                                                 |                2 |              5 |         2.50 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_138__reg[1]_1[0]                                 | int_rst                                                                 |                2 |              5 |         2.50 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_255_                                             |                                                                         |                2 |              5 |         2.50 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_1[0]                          | int_rst                                                                 |                1 |              5 |         5.00 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/IBusCachedPlugin_injector_decodeRemoved |                2 |              5 |         2.50 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/basesoc_uart_tx_fifo_level0_reg[4][0]                | int_rst                                                                 |                1 |              5 |         5.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_138__reg[1]                                      | soc_int_rst                                                             |                1 |              4 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/soc_uart_tx_fifo_level0_reg[1][0]                    | soc_int_rst                                                             |                1 |              4 |         4.00 |
+|  clk100_IBUF_BUFG | soc_rd_next_value1                                                                   | soc_int_rst                                                             |                2 |              4 |         2.00 |
+|  clk100_IBUF_BUFG | soc_countwr_next_value_ce9                                                           | soc_int_rst                                                             |                1 |              4 |         4.00 |
+|  clk100_IBUF_BUFG | soc_rx_bitcount                                                                      | soc_rx_bitcount[3]_i_1_n_0                                              |                1 |              4 |         4.00 |
+|  clk100_IBUF_BUFG | soc_sink_ready173_out                                                                | soc_sink_ready1                                                         |                1 |              4 |         4.00 |
+|  clk100_IBUF_BUFG | soc_uart_rx_fifo_wrport_we__0                                                        | soc_int_rst                                                             |                2 |              4 |         2.00 |
+|  clk100_IBUF_BUFG | soc_uart_tx_fifo_consume[2]_i_1_n_0                                                  | soc_int_rst                                                             |                1 |              4 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/CsrPlugin_hadException_reg[0]                                  | VexRiscv/dataCache_1_/reset0                                            |                2 |              4 |         2.00 |
+|  clk100_IBUF_BUFG | soc_count2_next_value_ce5                                                            | soc_int_rst                                                             |                2 |              4 |         2.00 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_7[0]         |                2 |              5 |         2.50 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/soc_uart_rx_fifo_readable_reg[0]                     | soc_int_rst                                                             |                2 |              5 |         2.50 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/soc_uart_tx_fifo_level0_reg[4][0]                    | soc_int_rst                                                             |                2 |              5 |         2.50 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_0[0]                      | soc_int_rst                                                             |                1 |              5 |         5.00 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/IBusCachedPlugin_injector_decodeRemoved |                3 |              5 |         1.67 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_255_                                             |                                                                         |                3 |              5 |         1.67 |
 |  clk100_IBUF_BUFG |                                                                                      | VexRiscv/dataCache_1_/SR[0]                                             |                3 |              6 |         2.00 |
-|  clk100_IBUF_BUFG |                                                                                      | wishbone2csr_state                                                      |                5 |              6 |         1.20 |
-|  clk100_IBUF_BUFG | basesoc_tx_reg[6]_i_1_n_0                                                            |                                                                         |                3 |              7 |         2.33 |
-|  clk100_IBUF_BUFG | uart_phy_tx_reg[6]_i_1_n_0                                                           |                                                                         |                3 |              7 |         2.33 |
+|  clk100_IBUF_BUFG |                                                                                      | vns_wishbone2csr_state                                                  |                5 |              6 |         1.20 |
+|  clk100_IBUF_BUFG | soc_tx_reg[6]_i_1_n_0                                                                |                                                                         |                2 |              7 |         3.50 |
 |  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/stageB_mmuRsp_physicalAddress[11]_i_2_n_0                      | VexRiscv/dataCache_1_/stageB_mmuRsp_physicalAddress[11]_i_1_n_0         |                2 |              7 |         3.50 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_11[0]            |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_4[0]                          | int_rst                                                                 |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg[3]                            | int_rst                                                                 |                1 |              8 |         8.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/uart0_rx_fifo_readable_reg[0]                        |                                                                         |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][1]                                   | int_rst                                                                 |                1 |              8 |         8.00 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_8[0]             |                5 |              8 |         1.60 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_10[0]            |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/SR[0]                                   |                5 |              8 |         1.60 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][0]                                   | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_3[0]                          | int_rst                                                                 |                1 |              8 |         8.00 |
-|  clk100_IBUF_BUFG | basesoc_uart_tx_fifo_syncfifo_re                                                     |                                                                         |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_5[0]             |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | basesoc_rx_reg                                                                       |                                                                         |                1 |              8 |         8.00 |
-|  clk100_IBUF_BUFG | uart0_tx_fifo_syncfifo_re                                                            |                                                                         |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | uart_phy_source_payload_data__0                                                      |                                                                         |                3 |              8 |         2.67 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_5[0]         |                3 |              8 |         2.67 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_1[3]                      | soc_int_rst                                                             |                3 |              8 |         2.67 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_10[3]                     | soc_int_rst                                                             |                1 |              8 |         8.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_3[0]                      | soc_int_rst                                                             |                3 |              8 |         2.67 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][1]                                   | soc_int_rst                                                             |                1 |              8 |         8.00 |
+|  clk100_IBUF_BUFG | soc_rx_reg                                                                           |                                                                         |                1 |              8 |         8.00 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/SR[0]                                   |                7 |              8 |         1.14 |
+|  clk100_IBUF_BUFG | soc_source_payload_data__0                                                           |                                                                         |                1 |              8 |         8.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg[1]                        | soc_int_rst                                                             |                3 |              8 |         2.67 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg[0]                        | soc_int_rst                                                             |                4 |              8 |         2.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][3]                                   | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_8[0]         |                3 |              8 |         2.67 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_4[0]         |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg[3]                        | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][0]                                   | soc_int_rst                                                             |                4 |              8 |         2.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_1[2]                      | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][2]                                   | soc_int_rst                                                             |                4 |              8 |         2.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_2[0]                      | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_1[0]                      | soc_int_rst                                                             |                4 |              8 |         2.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg[2]                        | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/soc_uart_rx_fifo_readable_reg_0[0]                   |                                                                         |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_10[2]                     | soc_int_rst                                                             |                1 |              8 |         8.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_10[1]                     | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_6[0]         |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | soc_uart_tx_fifo_syncfifo_re                                                         |                                                                         |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_10[0]                     | soc_int_rst                                                             |                3 |              8 |         2.67 |
 |  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_12_                                              | VexRiscv/IBusCachedPlugin_cache/_zz_13_                                 |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_2[1]                          | int_rst                                                                 |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | uart_phy_rx_reg                                                                      |                                                                         |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | basesoc_source_payload_data__0                                                       |                                                                         |                1 |              8 |         8.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][3]                                   | int_rst                                                                 |                1 |              8 |         8.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg[1]                            | int_rst                                                                 |                4 |              8 |         2.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg[0]                            | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg[2]                            | int_rst                                                                 |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_2[3]                          | int_rst                                                                 |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_2[2]                          | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_137__reg[6][2]                                   | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_2[0]                          | int_rst                                                                 |                4 |              8 |         2.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_0[0]                          | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_6[0]             |                4 |              8 |         2.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/basesoc_uart_rx_fifo_readable_reg[0]                 |                                                                         |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_0[1]                          | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_0[2]                          | int_rst                                                                 |                3 |              8 |         2.67 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/wishbone2csr_state_reg_0[3]                          | int_rst                                                                 |                2 |              8 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/uart0_tx_fifo_level0_reg[1]                          |                                                                         |                2 |             16 |         8.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/basesoc_uart_tx_fifo_level0_reg[1]                   |                                                                         |                2 |             16 |         8.00 |
-|  clk100_IBUF_BUFG | basesoc_uart_rx_fifo_wrport_we__0                                                    |                                                                         |                2 |             16 |         8.00 |
-|  clk100_IBUF_BUFG | uart0_rx_fifo_wrport_we__0                                                           |                                                                         |                2 |             16 |         8.00 |
-|  clk100_IBUF_BUFG | rs_next_value_ce0                                                                    | int_rst                                                                 |                8 |             18 |         2.25 |
-|  clk100_IBUF_BUFG | sel                                                                                  | VexRiscv/IBusCachedPlugin_cache/grant_reg_5                             |                5 |             20 |         4.00 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/dataCache_1_/reset0                                            |               15 |             22 |         1.47 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/p_2_in                                                         | VexRiscv/dataCache_1_/reset0                                            |                8 |             25 |         3.12 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_229_1_out                                        |                                                                         |                4 |             27 |         6.75 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/vns_wishbone2csr_state_reg_1[1]                      | soc_int_rst                                                             |                2 |              8 |         4.00 |
+|  clk100_IBUF_BUFG | soc_uart_rx_fifo_wrport_we__0                                                        |                                                                         |                2 |             16 |         8.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/soc_uart_tx_fifo_level0_reg[1][0]                    |                                                                         |                2 |             16 |         8.00 |
+|  clk100_IBUF_BUFG | soc_rs_next_value_ce0                                                                | soc_int_rst                                                             |                7 |             18 |         2.57 |
+|  clk100_IBUF_BUFG | sel                                                                                  | VexRiscv/IBusCachedPlugin_cache/vns_grant_reg_1                         |                5 |             20 |         4.00 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/dataCache_1_/reset0                                            |               12 |             22 |         1.83 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/p_2_in                                                         | VexRiscv/dataCache_1_/reset0                                            |                9 |             25 |         2.78 |
 |  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/IBusCachedPlugin_fetchPc_booted_reg_2                | VexRiscv/dataCache_1_/reset0                                            |               11 |             27 |         2.45 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_INSTRUCTION_reg[20][0]                       |                                                                         |                9 |             30 |         3.33 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/E[0]                                                           |                                                                         |                7 |             30 |         4.29 |
-|  clk100_IBUF_BUFG | basesoc_timer_update_value_re                                                        | int_rst                                                                 |               11 |             32 |         2.91 |
-|  clk100_IBUF_BUFG | VexRiscv/memory_DivPlugin_rs1[31]                                                    | VexRiscv/dataCache_1_/memory_DivPlugin_div_counter_willClear            |                5 |             32 |         6.40 |
-|  clk100_IBUF_BUFG |                                                                                      | p_24_in                                                                 |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG |                                                                                      | p_10_in                                                                 |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/count_reg_12_sn_1                       |               12 |             32 |         2.67 |
-|  clk100_IBUF_BUFG |                                                                                      | basesoc_sink_ready3                                                     |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_INSTRUCTION_reg[27][0]                       |                                                                         |               24 |             32 |         1.33 |
-|  clk100_IBUF_BUFG | basesoc_soccontroller_bus_errors                                                     | int_rst                                                                 |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/memory_DivPlugin_div_done_reg_0[0]                             |                                                                         |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/CsrPlugin_hadException                                                      |                                                                         |               10 |             32 |         3.20 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_INSTRUCTION_reg[21][0]                       | VexRiscv/dataCache_1_/reset0                                            |               14 |             32 |         2.29 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/_zz_229_1_out                                        |                                                                         |               10 |             27 |         2.70 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/E[0]                                                           |                                                                         |               10 |             30 |         3.00 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_INSTRUCTION_reg[20][0]                       |                                                                         |               11 |             30 |         2.73 |
+|  clk100_IBUF_BUFG |                                                                                      | VexRiscv/IBusCachedPlugin_cache/vns_count_reg_12_sn_1                   |               11 |             32 |         2.91 |
+|  clk100_IBUF_BUFG | soc_soccontroller_bus_errors                                                         | soc_int_rst                                                             |                8 |             32 |         4.00 |
 |  clk100_IBUF_BUFG | VexRiscv/memory_DivPlugin_div_result[31]_i_1_n_0                                     |                                                                         |                8 |             32 |         4.00 |
-|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/CsrPlugin_exceptionPortCtrl_exceptionContext_badAddr |                                                                         |               18 |             35 |         1.94 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/memory_DivPlugin_div_done_reg_0[0]                             |                                                                         |                8 |             32 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_INSTRUCTION_reg[27][0]                       |                                                                         |               22 |             32 |         1.45 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_INSTRUCTION_reg[21][0]                       | VexRiscv/dataCache_1_/reset0                                            |               18 |             32 |         1.78 |
+|  clk100_IBUF_BUFG |                                                                                      | p_8_in                                                                  |                8 |             32 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/memory_DivPlugin_rs1[31]                                                    | VexRiscv/dataCache_1_/memory_DivPlugin_div_counter_willClear            |                6 |             32 |         5.33 |
+|  clk100_IBUF_BUFG | VexRiscv/CsrPlugin_hadException                                                      |                                                                         |                9 |             32 |         3.56 |
+|  clk100_IBUF_BUFG | soc_timer_update_value_re                                                            | soc_int_rst                                                             |                8 |             32 |         4.00 |
+|  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/CsrPlugin_exceptionPortCtrl_exceptionContext_badAddr |                                                                         |               17 |             35 |         2.06 |
 |  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/memory_to_writeBack_REGFILE_WRITE_VALID_reg[0]                 |                                                                         |               21 |             37 |         1.76 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/stageB_flusher_valid_reg_0                                     | VexRiscv/dataCache_1_/reset0                                            |               23 |             42 |         1.83 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/stageB_flusher_valid_reg_0                                     | VexRiscv/dataCache_1_/reset0                                            |               22 |             42 |         1.91 |
 |  clk100_IBUF_BUFG | VexRiscv/IBusCachedPlugin_cache/E[0]                                                 |                                                                         |               20 |             64 |         3.20 |
-|  clk100_IBUF_BUFG | VexRiscv/_zz_133_[2]_i_1_n_0                                                         |                                                                         |               23 |             68 |         2.96 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1__io_mem_cmd_s2mPipe_ready                                       |                                                                         |               20 |             68 |         3.40 |
-|  clk100_IBUF_BUFG |                                                                                      |                                                                         |               37 |             85 |         2.30 |
-|  clk100_IBUF_BUFG |                                                                                      | int_rst                                                                 |               42 |             97 |         2.31 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/stageB_flusher_valid_reg_0                                     |                                                                         |               36 |            101 |         2.81 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1__io_mem_cmd_s2mPipe_ready                                       |                                                                         |               22 |             68 |         3.09 |
+|  clk100_IBUF_BUFG | VexRiscv/_zz_133_[2]_i_1_n_0                                                         |                                                                         |               21 |             68 |         3.24 |
+|  clk100_IBUF_BUFG |                                                                                      |                                                                         |               35 |             78 |         2.23 |
+|  clk100_IBUF_BUFG |                                                                                      | soc_int_rst                                                             |               34 |             86 |         2.53 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/stageB_flusher_valid_reg_0                                     |                                                                         |               39 |            101 |         2.59 |
 |  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/decode_to_execute_MEMORY_ENABLE_reg                            |                                                                         |               61 |            152 |         2.49 |
-|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/memory_DivPlugin_div_counter_willClear                         |                                                                         |               80 |            218 |         2.72 |
+|  clk100_IBUF_BUFG | VexRiscv/dataCache_1_/memory_DivPlugin_div_counter_willClear                         |                                                                         |               68 |            218 |         3.21 |
 +-------------------+--------------------------------------------------------------------------------------+-------------------------------------------------------------------------+------------------+----------------+--------------+
 
 

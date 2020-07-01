@@ -8,7 +8,6 @@
 #include <generated/csr.h>
 
 #include "logic_game.c"
-#include "uart0/uart0.c"
 
 static char *readstr(void)
 {
@@ -126,10 +125,8 @@ static void console_service(void)
 	else if(strcmp(token, "3") == 0)
 		fill();
 	else if(strcmp(token, "4") == 0){
-        initHMI();
 		while(1){
 		    str=NULL;
-			puts("HOLA MUNDO");
 	        while(str == NULL)str = readstr();
 	            token = get_token(&str);
 	            printData(token);
@@ -159,7 +156,7 @@ static void console_service(void)
 	}
 	else if(strcmp(token, "6") == 0){
 	    initHMI();
-	    printData("{10007, 2020-06-03, 19:36:10, 15885, 65, 21, 1, 0}");
+	    printData("{1, 10007, 19:36:10, 15885, 65, 21, 0, 0, R003, 210, 10}");
 	    }
 	prompt();
 }
